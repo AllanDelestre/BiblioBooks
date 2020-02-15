@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="styles.css">
         <title>BiblioBooks.com</title>
     </head>
@@ -40,11 +40,67 @@
                 <div class="row justify-content-center">
                     <div class="col-md-7">
                     <h1 class="font-weight-light mt-4">Les livres du moment</h1>
+                    <p class="font-weight-light mt-4 text-danger">Nos livres sont séléctionné par nos experts Romancier</p>
                     <p class="lead text-white-50"></p>
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
+
+        <?php
+            try{
+                //On se connecte à MySQL
+                $bdd = new PDO('mysql:host=localhost;dbname=projet_bibliotheque;charset=utf8', 'root', '');
+            }
+            catch(Exception $e){
+                //En cas d'erreur, on affiche un message et on arrête tout
+                die('Erreur : '.$e->getMessage());
+            }
+
+            $reponse = $bdd->query('SELECT * FROM livre');
+
+        ?>
+
+        <!--<div class="container">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th>Livre</th>
+                        <th>Genre</th>
+                        <th>Auteur</th>
+                        <th>Langue</th>
+                        <th>Editeur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <?php
+                               // echo $don
+                            ?>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>-->
 
 
         <footer id="footer" class="py-4 bg-dark text-white-50">
